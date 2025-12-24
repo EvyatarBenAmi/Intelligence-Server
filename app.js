@@ -1,16 +1,16 @@
 import express from "express"
 import routerUser from "./routes/usersR.js"
+import routerDebug from "./routes/debugR.js"
+import routerAgent from "./routes/agentsR.js"
 
 const app = express()
 const port = 3000
 app.use(express.json())
 
-app.get("/health", (req, res) => {
-    res.send({ ok: true })
-})
 
+app.use("/health",routerDebug)
 app.use("/users", routerUser)
-
+app.use("/agents",routerAgent)
 
 
 
